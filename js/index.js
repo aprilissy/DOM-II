@@ -31,21 +31,39 @@ document.querySelectorAll('a')
 // 5        pointerleave - Pointing device is moved out of the hit-testing boundary.
 const body = document.querySelector('body')
 
-body.addEventListener('pointerleave', (event) => {
-    alert(`Don't go!`)
-})
+// body.addEventListener('pointerleave', (event) => {
+//     alert(`Don't go!`)
+// })
 
-// 6        focus - An element has received focus (does not bubble).
+// 6        mouseover - A pointing device is moved onto the element that has the listener attached or onto one of its children.
 const introImg = document.querySelector('.intro img')
+console.log(introImg)
 
-introImg.addEventListener('focus', (event) => {
-    event.target.style.opacity = '0.5'
+introImg.addEventListener('mouseover', (event) => {
+    introImg.style.opacity = '0.5'
 })
 
-// 7
-// 8
-// 9
-// 10
+// 7        mouseout - A pointing device is moved off the element that has the listener attached or off one of its children.
+introImg.addEventListener('mouseout', (event) => {
+    introImg.style.opacity = '1'
+})
+
+// 8        contextmenu - The right button of the mouse is clicked (before the context menu is displayed).
+body.addEventListener('contextmenu', (event) => {
+    body.style.backgroundColor = 'slategrey'
+})
+
+// 9        copy - The selection has been copied to the clipboard
+const pTags = document.querySelectorAll('p').forEach(link => link.addEventListener('copy', event => {
+    link.style.color = 'pink'
+}))
+
+// 10       keydown - any key is pressed
+const page = document.querySelector('html')
+
+page.addEventListener('keydown', (event) => {
+    page.style.backgroundColor = 'powderblue'
+})
 
 // Nest two similar events somewhere in the site and prevent the event propagation properly. Remember not all event types bubble.
 
