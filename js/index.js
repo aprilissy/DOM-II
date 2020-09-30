@@ -37,7 +37,6 @@ const body = document.querySelector('body')
 
 // 6        mouseover - A pointing device is moved onto the element that has the listener attached or onto one of its children.
 const introImg = document.querySelector('.intro img')
-console.log(introImg)
 
 introImg.addEventListener('mouseover', (event) => {
     introImg.style.opacity = '0.5'
@@ -65,9 +64,22 @@ page.addEventListener('keydown', (event) => {
     page.style.backgroundColor = 'powderblue'
 })
 
-// Nest two similar events somewhere in the site and prevent the event propagation properly. Remember not all event types bubble.
+// a     .stopPropagation() - Nest two similar events somewhere in the site and prevent the event propagation properly. Remember not all event types bubble.
+const header = document.querySelector('.nav-container')
+console.log(header)
 
-// Stop the navigation items from refreshing the page by using preventDefaul()  kljkldjaf 
+header.addEventListener('dblclick', (event) => {
+    header.style.backgroundColor = 'powderblue'
+})
+
+
+document.querySelectorAll('a')
+    .forEach(link => link.addEventListener('dblclick', event => {
+        link.style.color = 'pink'
+        event.stopPropagation()
+    }))
+
+// b     .preventDefault() - Stop the navigation items from refreshing the page by using preventDefaul() 
 
 document.querySelectorAll('a')
     .forEach(link => link.addEventListener('click', event => {
